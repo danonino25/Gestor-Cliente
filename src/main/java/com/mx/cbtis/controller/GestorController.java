@@ -160,7 +160,8 @@ public class GestorController {
 		RestTemplate  template = new RestTemplate();
 		ResponseEntity<Usuario> response = template.postForEntity(urlservicebd,paramUser,Usuario.class);
 		
-		return response;
+		// Solo se reenvia el cuerpo y el status, no las cabeceras del Backend (el proxy de Render las rechaza)
+		return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
 
 	}
 	
@@ -308,7 +309,8 @@ public class GestorController {
 		String urlservicebd = apiUrl + "/addTareas";
 		RestTemplate template = new RestTemplate();
 		ResponseEntity<Integer> response = template.postForEntity(urlservicebd, paramName, Integer.class);
-		return response;
+		// Solo se reenvia el cuerpo y el status, no las cabeceras del Backend (el proxy de Render las rechaza)
+		return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
 	}
 	
 	@PostMapping("/cambiosTareas")
@@ -316,7 +318,8 @@ public class GestorController {
 		String urlservicebd = apiUrl + "/addTareas";
 		RestTemplate template = new RestTemplate();
 		ResponseEntity<Integer> response = template.postForEntity(urlservicebd, paramDatos, Integer.class);
-		return response;
+		// Solo se reenvia el cuerpo y el status, no las cabeceras del Backend (el proxy de Render las rechaza)
+		return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
 	}
 	
 	@PostMapping("/consultarTareas")
