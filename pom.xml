@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.mx.cbtis</groupId>
     <artifactId>Ejercicio5Cliente</artifactId>
@@ -15,7 +15,6 @@
     <description>Interfaz del Gestor de Proyectos</description>
     
     <properties>
-        <!-- Upgrade a Java 21 requerido -->
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
@@ -52,14 +51,14 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- 1. SonarQube Scanner Plugin (Solicitado por el profesor) -->
+            <!-- 1. SonarQube Scanner Plugin (Exigido por el profesor) -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>5.5.0.6356</version>
             </plugin>
 
-            <!-- 2. JaCoCo Maven Plugin (Para reporte de Cobertura de Código) -->
+            <!-- 2. JaCoCo Maven Plugin (Compatible con Java 21) -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -80,7 +79,7 @@
                 </executions>
             </plugin>
 
-            <!-- 3. Maven Surefire Plugin (Para ejecución de pruebas unitarias) -->
+            <!-- 3. Maven Surefire Plugin (Compatible con Java 21) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
