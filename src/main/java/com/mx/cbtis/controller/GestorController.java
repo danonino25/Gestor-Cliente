@@ -33,8 +33,23 @@ import com.mx.cbtis.modelo.Usuario;
 public class GestorController {
 
 	// URL base de la API (Backend). En la nube se define con la variable de entorno API_URL
-	@Value("${api.url:http://localhost:8081}")
 	private String apiUrl = "http://localhost:8081";
+
+	// Normaliza la URL: quita espacios y "/" final, y agrega https:// si falta
+	@Value("${api.url:http://localhost:8081}")
+	void setApiUrl(String url) {
+		if (url == null || url.isBlank()) {
+			return;
+		}
+		String limpia = url.trim();
+		while (limpia.endsWith("/")) {
+			limpia = limpia.substring(0, limpia.length() - 1);
+		}
+		if (!limpia.startsWith("http://") && !limpia.startsWith("https://")) {
+			limpia = "https://" + limpia;
+		}
+		this.apiUrl = limpia;
+	}
 	
 	@GetMapping("/")
 	public String getHome() {
